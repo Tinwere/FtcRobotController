@@ -78,4 +78,11 @@ lint/intermediates/
 lint/generated/
 lint/outputs/
 lint/tmp/
+<<<<<<< HEAD
 # lint/reports/
+=======
+# lint/reports/
+.idea/misc.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+>>>>>>> db71c0e421f131d8419b8f7d69f18ec75f420c71
