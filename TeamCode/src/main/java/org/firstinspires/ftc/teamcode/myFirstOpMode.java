@@ -19,12 +19,15 @@ public class myFirstOpMode extends LinearOpMode {
     private DcMotor leftFrontMotor = null;
     private DcMotor leftBackMotor = null;
     private Servo testservo;
+    private DcMotor motorArm = null;
     //rtyrthrthytjutd Hi peter was here
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
+
+        motorArm = hardwareMap.get(DcMotor.class,"motorArm");
         testservo = hardwareMap.get(Servo.class, "testservo");  //Gets the devices from configurations
         leftFrontMotor  = hardwareMap.get(DcMotor.class, "leftFrontMotor");
         leftBackMotor  = hardwareMap.get(DcMotor.class, "leftBackMotor");
@@ -39,6 +42,7 @@ public class myFirstOpMode extends LinearOpMode {
         leftBackMotor.setDirection(DcMotor.Direction.FORWARD);
         rightFrontMotor.setDirection(DcMotor.Direction.FORWARD);
         rightBackMotor.setDirection(DcMotor.Direction.REVERSE);
+        motorArm.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -91,8 +95,15 @@ public class myFirstOpMode extends LinearOpMode {
                 testservo.setPosition(0.5);
             }
 
+            //arm part
 
-
+            if(gamepad1.dpad_up){
+                motorArm.setPower(0.2);
+            }
+            else if(gamepad1.dpad_down){
+                motorArm.setPower(-0.2);
+            }
+            
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
